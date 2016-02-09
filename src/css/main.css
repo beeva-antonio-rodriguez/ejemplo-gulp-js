@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  background: #ebebeb;
+  font-family: sans-serif; }
+
+.page {
+  margin: 1rem auto;
+  padding: 1rem;
+  width: calc(94% - 2rem); }
+  .page h1, .page h2 {
+    font-family: serif; }
+  .page h1 {
+    font-size: 1.6rem; }
+  .page h2 {
+    font-size: 1.4rem; }
+  .page p {
+    font-size: 1rem; }
+  .page main {
+    display: none; }
+    .page main img {
+      width: 100%; }

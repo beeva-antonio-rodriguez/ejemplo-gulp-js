@@ -1,0 +1,31 @@
+* {
+  margin:0;
+  padding:0;
+}
+
+body {
+  background: #ebebeb;
+  font-family: sans-serif;
+}
+
+.page {
+  margin:1rem auto;
+  padding:1rem;
+  width:calc(94% - 2rem);
+  h1, h2 {
+    font-family:serif;
+  }
+  h1 {
+    font-size:1.6rem;
+  }
+  h2 {
+    font-size:1.4rem;
+  }
+  p {
+    font-size:1rem;
+  }
+  main {
+    display:none;
+    img {width:100%;}
+  }
+}
