@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
   htmlmin = require('gulp-htmlmin'),
   sass = require('gulp-sass'),
-  cssnano = require('gulp-cssnano')
+  cssnano = require('gulp-cssnano'),
   jshint = require("gulp-jshint"),
   uglify = require("gulp-uglify"),
   imagemin = require('gulp-imagemin'),
@@ -10,7 +10,9 @@ var gulp = require('gulp'),
 
 gulp.task('html', function () {
   return gulp.src('./src/**/*.html')
-    .pipe(htmlmin())
+    .pipe(htmlmin({
+      collapseWhitespace: true
+    }))
     .pipe(gulp.dest('./dist'));
 });
 
@@ -22,10 +24,14 @@ gulp.task('styles', function () {
     .pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task('scripts', function () {
+gulp.task('jshint', function () {
   return gulp.src('./src/js/**/*.js')
     .pipe(jshint())
-    .pipe(jshint.reporter())
+    .pipe(jshint.reporter());
+});
+
+gulp.task('scripts', ['jshint'], function () {
+  return gulp.src('./src/js/**/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('./dist/js'));
 });
@@ -37,7 +43,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('clean', function() {
-  return del(['dist']);
+  return del(['./dist']);
 });
 
 gulp.task('default', ['clean'], function() {
@@ -45,11 +51,9 @@ gulp.task('default', ['clean'], function() {
 });
 
 
-gulp.task('watch', function() {
-
+gulp.task('watch', ['default'], function() {
   gulp.watch('./src/**/*.html', ['html']);
   gulp.watch('./src/scss/**/*.scss', ['styles']);
   gulp.watch('./src/js/**/*.js', ['scripts']);
   gulp.watch('./src/img/**/*', ['images']);
-
 });
