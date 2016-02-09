@@ -1,2 +1,3 @@
-var pageContent = $('main');
-$('main').fadeIn();
+// main.js
+var $pageContent = $('main');
+$pageContent.fadeIn();
